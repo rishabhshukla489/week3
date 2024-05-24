@@ -1,7 +1,14 @@
 const express =require('express');
 const app=express();
 
-app.get("/health-checkup",(req,res)=>{
+let count=0;
+function calcreq(req,res,next){
+    console.log(count++);
+    next();
+
+}
+// app.use(calcreq);
+app.get("/health-checkup",calcreq,(req,res)=>{
     const username=req.headers.username;
     const password=req.headers.password;
     const kidneyid=req.query.kidneyid;
