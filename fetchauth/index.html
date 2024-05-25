@@ -17,7 +17,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-        <script >
+        <!-- <script >
             function getanimaldata(){
               fetch("https://fakerapi.it/api/v1/persons").then((response)=>{
                 response.json().then((finaldata)=>{
@@ -27,7 +27,17 @@
               });
                 console.log(response);
             }
+        </script> -->
+        <script >
+            async function getanimaldata(){
+             const response= await fetch("https://fakerapi.it/api/v1/persons");
+               const finaldata=await response.json();
+                    console.log(finaldata)
+               document.getElementById("userData").innerHTML=JSON.stringify(finaldata);
+                console.log(response);
+            }
         </script>
         <button onclick="getanimaldata()">get animal datat</button>
+        <div id="userData"></div>
     </body>
 </html>
