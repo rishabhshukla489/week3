@@ -5,6 +5,13 @@ const app=express();
 const schema=z.array(z.number())
 app.use(express.json());
 
+// const schema=z.object({
+//     email: z.string(),
+//     password: z.string(),
+//     country: z.literal("IN").or(z.literal("US")),
+//     kisney:z.array(z.number())
+// })
+
 app.post("/health-checkup",(req,res)=>{
     const kidneys =req.body.kidneys;
    const response =schema.safeParse(kidneys);
